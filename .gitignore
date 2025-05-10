@@ -1,0 +1,37 @@
+# Virtual environment
+venv/
+.env
+
+# Python bytecode and optimization files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# macOS-specific files (if applicable)
+.DS_Store
+
+# IDE and editor files (VS Code)
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# Build and distribution files
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+
+# Dataset and model files (optional, adjust as needed)
+*.zip
+models/
+data/
