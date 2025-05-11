@@ -24,5 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Train Model
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}  # Added
         run: |
-          PYTHONPATH=. python src/feature_pipeline.py
+          PYTHONPATH=. python src/train_model.py  # Changed from feature_pipeline.py

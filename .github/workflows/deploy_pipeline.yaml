@@ -1,16 +1,16 @@
-name: citibike_inference_pipeline
+name: citibike_model_deployment_pipeline
 
 on:
   workflow_run:
-    workflows: ["citibike_feature_engineering_pipeline"]
+    workflows: ["citibike_model_training_pipeline"]
     types:
       - completed
-  workflow_dispatch:       # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
-  inference:
+  deploy:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'  # Added
+    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout repository
@@ -26,8 +26,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Inference Script
+      - name: Deploy Model
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
         run: |
-          PYTHONPATH=. python src/inference.py
+          PYTHONPATH=. python src/deploy_model.py

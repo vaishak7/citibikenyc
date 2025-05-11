@@ -24,5 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Feature Engineering Script
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}  # Added
         run: |
           PYTHONPATH=. python src/feature_pipeline.py
